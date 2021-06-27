@@ -27,6 +27,20 @@ class Keyboard {
     });
   }
 
+  applyReducedMatrix(){
+    let num_keys = this.keys.length;
+    let num_rows_cols = Math.ceil(Math.sqrt(num_keys));
+    let row = 0;
+    let col = 0;
+    this.keys.forEach((k,i,) => {
+      k.row = row;
+      k.col = col;
+      row += 1;
+      col += Math.floor(row / num_rows_cols);
+      row = row % num_rows_cols;
+    });
+  }
+
   parseLayout() {
     const name = this.json[0].name || 'keyboard';
     this.layout = this.json[0].name ? this.json.slice(1) : this.json

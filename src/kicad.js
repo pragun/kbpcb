@@ -24,11 +24,16 @@ class KiCad {
     this.leds = options.leds;
     Component.options.initX = options.x || 0;
     Component.options.initY = options.y || 0;
+    this.optimize_matrix = options.optimize_matrix;
   }
 
   generate() {
     NetRepo.clear();
     const keyboard = new Keyboard(this.layout);
+    console.log(this.optimize_matrix);
+    if(this.optimize_matrix){
+      keyboard.applyReducedMatrix();
+    }
 
     [...Array(keyboard.cols+1)].forEach((_, i) => NetRepo.add(`/col${i}`));
     [...Array(keyboard.rows+1)].forEach((_, i) => NetRepo.add(`/row${i}`));
