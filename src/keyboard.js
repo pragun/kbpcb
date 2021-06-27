@@ -42,6 +42,7 @@ class Keyboard {
     let size = 1;
     let cn = 0;
     let maxCol = 0;
+    let count = 0;
 
     this.keys = [];
     this.layout.forEach((row, ri) => {
@@ -82,13 +83,14 @@ class Keyboard {
             y += 0.5;
           }
 
-          this.keys.push(new Key((k+cn), x, y, size, h, rotation, ri, cn));
+          this.keys.push(new Key((k+'_'+count), x, y, size, h, rotation, ri, cn));
 
           x += size;
           mx = Math.max(x, mx);
           size = 1;
           maxCol = Math.max(cn, maxCol);
           cn += 1;
+          count += 1;
 
           if (h) {
             h = null;
