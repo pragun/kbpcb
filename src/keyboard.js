@@ -82,7 +82,7 @@ class Keyboard {
             y += 0.5;
           }
 
-          this.keys.push(new Key(k, x, y, size, h, rotation, ri, cn));
+          this.keys.push(new Key((k+cn), x, y, size, h, rotation, ri, cn));
 
           x += size;
           mx = Math.max(x, mx);
