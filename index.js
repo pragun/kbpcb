@@ -45,9 +45,9 @@ app.post('/submit', (req, res) => {
         [`sym-lib-table`, fs.readFileSync('templates/sym-lib-table')],
         [`fp-lib-table`, fs.readFileSync('templates/fp-lib-table')],
       ];
-      addFolder(zipFiles, 'footprints/kicad_lib_tmk');
-      addFolder(zipFiles, 'footprints/keyboard_parts.pretty');
-      addFolder(zipFiles, 'footprints/MX_Alps_Hybrid.pretty');
+      addFolder(zipFiles, 'libraries/kicad_lib_tmk');
+      addFolder(zipFiles, 'libraries/keyboard_parts.pretty');
+      addFolder(zipFiles, 'libraries/MX_Alps_Hybrid.pretty');
 
       zip = makeZip(res, zipFiles);
 
