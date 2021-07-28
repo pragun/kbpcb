@@ -1,9 +1,19 @@
 const Key = require('./key');
+const Hjson = require('hjson');
 
 class Keyboard {
   constructor(layoutStr) {
     this.layoutStr = layoutStr;
-    this.json = JSON.parse(layoutStr);
+    
+    try{
+      this.json = JSON.parse(layoutStr);
+    }catch(e){
+      console.log('JSON Exception:',e);
+      console.log('Trying HJSON...');
+      this.json = Hjson.parse(layoutStr);
+    };
+
+    console.log('Parsed Input File')
     this.parseLayout();
     this.validateKeys();
   }
