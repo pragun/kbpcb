@@ -11,10 +11,10 @@ const genKiCad = require('./src/kicad');
 
 const { addFolder, makeZip, makeZipFile } = require('./src/zip');
 
-
 var argv = require('yargs/yargs')(process.argv.slice(2))
     .command('build <input_file> <output_file>', 'Create KiCAD Project from Keyboard Layout', {}, (argv) => {
-        const name = path.basename(argv.input_file);
+        const name = path.basename(argv.input_file,'.json');
+        console.log('Name ',name);
         console.log('Processing file:',argv.input_file);
         const options = {
             leds: false,
