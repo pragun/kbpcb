@@ -28,6 +28,7 @@ app.post('/submit', (req, res) => {
         return res.redirect('/?error=Only+JSON+files+accepted');
       }
       const { document } = files;
+      console.log(document);
       const docName = path.basename(document.name).split('.')[0];
       const name = fields.name || docName;
       

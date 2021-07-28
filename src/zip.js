@@ -23,4 +23,16 @@ const makeZip = (res, files) => {
     });
 };
 
-module.exports = { addFolder, makeZip };
+
+const makeZipFile = (fname, files) => {
+  const zip = new JSZip();
+  files.forEach(f => zip.file(f[0], f[1]));
+  zip
+    .generateNodeStream({streamFiles:true})
+    .pipe(fs.createWriteStream(fname))
+    .on('finish', function () {
+      console.log(fname + " written.");
+    });
+};
+
+module.exports = { addFolder, makeZip, makeZipFile};
