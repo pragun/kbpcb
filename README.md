@@ -8,3 +8,12 @@ This fork adds/fixes the following:
     without this KiCAD tries to auto-annotate the schematic which, again breaks PCB <-> Schematic sync.
 3. The smallest possible matrix size is used -- I might give a commandline option for that
 4. Introduces a `cmd.js` utility file for running kbpcb off command line. I'll rename that to `kbpcb.js` one of these commits.
+
+Usage:
+```
+nodejs kbpcb.js build <input_file> <output_file>
+```
+
+where <input_file> is a .json file in the Keyboard Layout Editor Format
+and output_file will be a zipped KiCAD Project
+
